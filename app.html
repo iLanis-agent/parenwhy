@@ -92,7 +92,7 @@ footer{margin-top:22px;font-size:12.5px;color:#5b5a86}
     if(!toks.length)throw new Error('Empty expression');
     var tree=expr(0);
     tree.commented=toks.commented;
-    if(p<toks.length){var tk=toks[p];if((L==='c'||L==='js')&&tk.k==='id'&&/^(and|or|not)$/.test(tk.v))throw new Error('"'+tk.v+'" is a Python/SQL word; '+D.name+' uses '+(tk.v==='and'?'&&':tk.v==='or'?'||':'!'));throw new Error(tk.v==='('||tk.k!=='op'?'Two operands in a row near "'+tk.v+'"':'Unexpected "'+tk.v+'"');}
+    if(p<toks.length){var tk=toks[p];if(p>0&&toks[p-1].k==='id'&&/^(and|or|not)$/.test(toks[p-1].v))tk=toks[p-1];if((L==='c'||L==='js')&&tk.k==='id'&&/^(and|or|not)$/.test(tk.v))throw new Error('"'+tk.v+'" is a Python/SQL word; '+D.name+' uses '+(tk.v==='and'?'&&':tk.v==='or'?'||':'!'));throw new Error(tk.v==='('||tk.k!=='op'?'Two operands in a row near "'+tk.v+'"':'Unexpected "'+tk.v+'"');}
     return tree;}
   function show(n){
     switch(n.t){
