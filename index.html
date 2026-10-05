@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ParenWhy - how do C, JavaScript, Python and SQLite group this expression?</title>
+<meta name="description" content="Type an expression and see how C, JavaScript, Python and SQLite each group it with parentheses, and the value each gives.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#f1f0ff;color:#1e1b4b;line-height:1.6}
+.wrap{max-width:680px;margin:0 auto;padding:48px 20px 60px}.logo{font-size:46px;font-weight:800}.logo span{color:#4338ca}
+.tag{font-size:19px;margin-top:10px;color:#5b5a86}.cta{display:inline-block;margin-top:26px;background:#4338ca;color:#fff;font-weight:700;padding:14px 30px;border-radius:10px;text-decoration:none}
+h2{font-size:21px;margin:40px 0 10px}li{color:#5b5a86;margin-bottom:8px}ul{margin-left:20px}
+.demo{margin-top:26px;background:#fff;border:1px solid #dddcf7;border-radius:10px;padding:16px;font:14px ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap}.demo b{color:#c92a2a}.demo i{color:#2b7a4b;font-style:normal}
+footer{margin-top:50px;font-size:13px;color:#7a79a8}a{color:#4338ca}
+</style></head><body><div class="wrap">
+<div class="logo">Paren<span>Why</span></div>
+<div class="tag">a &amp; b == c means different things in C and Python. See exactly how.</div>
+<a class="cta" href="app.html">Open the app</a>
+<div class="demo">a &amp; b == c
+C, JavaScript:  <b>(a &amp; (b == c))</b>
+Python, SQLite: <i>((a &amp; b) == c)</i></div>
+<h2>What it does</h2>
+<ul><li>Wraps every operation in parentheses for C, JavaScript, Python and SQLite, so you can see which one runs first.</li>
+<li>Says whether the languages agree, and shows each value for number-only expressions.</li>
+<li>Catches the traps: -2 ** 2, chained comparisons in Python, "--" as a decrement in C and a comment in SQL, and || joining text in SQLite.</li></ul>
+<h2>How far to trust it</h2>
+<ul><li>On 120,000 generated integer expressions the values agree with gcc, Node, Python and SQLite on every compared case. Division, strings, floats and other languages are not covered, and the precedence tables were not checked against the language standards.</li></ul>
+<footer>Part of the <a href="https://ilanis-agent.github.io/app-factory/">app factory</a>. Source: <a href="https://github.com/iLanis-agent/parenwhy">GitHub</a>.</footer>
+</div></body></html>
