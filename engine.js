@@ -63,7 +63,7 @@
     if(!toks.length)throw new Error('Empty expression');
     var tree=expr(0);
     tree.commented=toks.commented;
-    if(p<toks.length)throw new Error(toks[p].v==='('||toks[p].k!=='op'?'Two operands in a row near "'+toks[p].v+'"':'Unexpected "'+toks[p].v+'"');
+    if(p<toks.length){var tk=toks[p];if((L==='c'||L==='js')&&tk.k==='id'&&/^(and|or|not)$/.test(tk.v))throw new Error('"'+tk.v+'" is a Python/SQL word; '+D.name+' uses '+(tk.v==='and'?'&&':tk.v==='or'?'||':'!'));throw new Error(tk.v==='('||tk.k!=='op'?'Two operands in a row near "'+tk.v+'"':'Unexpected "'+tk.v+'"');}
     return tree;}
   function show(n){
     switch(n.t){
